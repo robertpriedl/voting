@@ -6,7 +6,7 @@ tar -xvf powershell-*-linux-arm64.tar.gz -C ~/powershell
 sudo ln -s ~/powershell/pwsh /usr/bin/pwsh
 sudo yum install -y libicu
 cd /home/ec2-user
-chmod +x start.sh
+chmod +x /home/ec2-user/start.sh
 
 sudo cp mystartup.service /etc/systemd/system/mystartup.service
 
