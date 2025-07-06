@@ -1,5 +1,3 @@
-sudo mkdir /data
-sudo chmod 0777 /data
 cd /data
 sudo yum update -y
 sudo yum install -y tar gzip
