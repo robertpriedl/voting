@@ -7,7 +7,7 @@ tar -xvf powershell-*-linux-arm64.tar.gz -C ~/powershell
 sudo ln -s ~/powershell/pwsh /usr/bin/pwsh
 sudo yum install -y libicu
 cd /data/voting
-chmod +x /home/ec2-user/voting/start.sh
+chmod +x /data/voting/start.sh
 
 sudo cp /data/voting/mystartup.ini /etc/systemd/system/mystartup.service
 
