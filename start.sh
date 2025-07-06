@@ -1,1 +1,1 @@
-pwsh ./vote4pauli.ps1
+pwsh /data/voting/vote4pauli.ps1
