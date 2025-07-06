@@ -10,7 +10,7 @@ sudo yum install -y libicu
 cd /data/voting
 sudo chmod +x /data/voting/start.sh
 sudo chown ec2-user:ec2-user /data/voting/start.sh
-sudo chmod 755 /data
+sudo chmod 775 /data
 
 sudo chmod +x /data/voting/start.sh
 
