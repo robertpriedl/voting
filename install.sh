@@ -7,3 +7,10 @@ sudo ln -s ~/powershell/pwsh /usr/bin/pwsh
 sudo yum install -y libicu
 cd /home/ec2-user
 chmod +x start.sh
+
+sudo cp mystartup.service /etc/systemd/system/mystartup.service
+
+sudo systemctl daemon-reexec
+sudo systemctl daemon-reload
+sudo systemctl enable mystartup.service
+sudo systemctl start mystartup.service
