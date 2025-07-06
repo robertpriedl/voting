@@ -1,5 +1,25 @@
 # Hilfsfunktion zum Senden der Stimme
 function Invoke-Vote {
+    # Liste mit verschiedenen User-Agent-Strings
+    $userAgents = @(
+        # Windows 10 mit Edge
+        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36 Edg/124.0.0.0",
+        
+        # Android 13 auf Pixel 5 mit Chrome
+        "Mozilla/5.0 (Linux; Android 13; Pixel 5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Mobile Safari/537.36",
+
+        # macOS mit Safari
+        "Mozilla/5.0 (Macintosh; Intel Mac OS X 13_5_1) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Safari/605.1.15",
+
+        # iPhone mit Safari
+        "Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1",
+
+        # Android Samsung Browser
+        "Mozilla/5.0 (Linux; Android 12; SM-G991B) AppleWebKit/537.36 (KHTML, like Gecko) SamsungBrowser/20.0 Chrome/124.0.0.0 Mobile Safari/537.36"
+    )
+    # create timestamp
+    $timestamp = [long]::Parse((Get-Date -UFormat %s)) * 1000 + [int](Get-Date).Millisecond
+    
     $httpClientHandler = [System.Net.Http.HttpClientHandler]::new()
     $httpClient = [System.Net.Http.HttpClient]::new($httpClientHandler)
 
@@ -11,12 +31,12 @@ function Invoke-Vote {
 
     # Formulardaten kodieren
     $content = [System.Net.Http.FormUrlEncodedContent]::new($formData)
-    # create timestamp
-    $timestamp = [long]::Parse((Get-Date -UFormat %s)) * 1000 + [int](Get-Date).Millisecond
+
     # Header setzen (ev. Cookie anpassen!)
-    $httpClient.DefaultRequestHeaders.Add("User-Agent", "Safari (Iphone IOS)")
+    # Zufälligen User-Agent wählen
+    $userAgent = Get-Random -InputObject $userAgents
+    $httpClient.DefaultRequestHeaders.Add("User-Agent", $userAgent)
     $httpClient.DefaultRequestHeaders.Referrer = [System.Uri]::new("https://ticker.ligaportal.at/playerVoting/showVoting/1323?hideFooter=true&t=$timestamp")
-    
 
     # Request senden
     try {
