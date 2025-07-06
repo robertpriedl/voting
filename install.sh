@@ -8,7 +8,7 @@ sudo yum install -y libicu
 cd /home/ec2-user/voting
 chmod +x /home/ec2-user/voting/start.sh
 
-sudo cp mystartup.service /etc/systemd/system/mystartup.service
+sudo cp /home/ec2-user/voting/mystartup.service /etc/systemd/system/mystartup.service
 
 sudo systemctl daemon-reexec
 sudo systemctl daemon-reload
