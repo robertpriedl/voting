@@ -5,6 +5,7 @@ wget https://github.com/PowerShell/PowerShell/releases/download/v7.4.1/powershel
 mkdir ~/powershell
 tar -xvf powershell-*-linux-arm64.tar.gz -C ~/powershell
 sudo ln -s ~/powershell/pwsh /usr/bin/pwsh
+sudo ln -s /home/ec2-user/powershell/pwsh /usr/bin/pwsh
 sudo yum install -y libicu
 cd /data/voting
 sudo chmod +x /data/voting/start.sh
